@@ -11,14 +11,16 @@ namespace GradeBook.GradeBooks
 {
     public abstract class BaseGradeBook
     {
+        public bool IsWeighted { get; set; }
         public string Name { get; set; }
         public List<Student> Students { get; set; }
 
         public GradeBookType Type { get; set; }
 
-        public BaseGradeBook(string name)
+        public BaseGradeBook(string name, bool isWeighted)
         {
             Name = name;
+            IsWeighted = isWeighted;
             Students = new List<Student>();
         }
 
@@ -108,16 +110,21 @@ namespace GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
+            double addToGPA=0.0;
+            if (IsWeighted==true && (studentType.ToString()== "Honors" || studentType.ToString() == "DualEnrolled"))
+            {
+                addToGPA++;
+            }
             switch (letterGrade)
             {
                 case 'A':
-                    return 4;
+                    return 4 + addToGPA;
                 case 'B':
-                    return 3;
+                    return 3 + addToGPA;
                 case 'C':
-                    return 2;
+                    return 2 + addToGPA;
                 case 'D':
-                    return 1;
+                    return 1 + addToGPA;
                 case 'F':
                     return 0;
             }
