@@ -7,11 +7,11 @@ namespace GradeBook.GradeBooks
 {
     class RankedGradeBook: BaseGradeBook
     {
-        public static readonly GradeBookType Ranked;
+        //public GradeBookType Ranked;
 
         public RankedGradeBook(string name): base(name)
         {
-            Type = RankedGradeBook.Ranked;
+            Type = GradeBookType.Ranked;
         }
 
     }
