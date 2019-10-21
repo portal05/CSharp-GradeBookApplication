@@ -7,7 +7,7 @@ namespace GradeBook.GradeBooks
 {
     class StandardGradeBook: BaseGradeBook
     {
-        private static readonly GradeBookType Standard;
+        public static readonly GradeBookType Standard;
 
         public StandardGradeBook(string name) : base(name)
         {
