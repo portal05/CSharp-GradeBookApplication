@@ -34,24 +34,40 @@ namespace GradeBook.GradeBooks
             return 'F';
 
         }
-/*
-        public double[] OrderByDescendingAverageGrade()
+        public override void CalculateStatistics()
         {
-            double[] gradeList = new double[Students.Count];
-           // double maxGrade = double.MinValue;
-            var i = 0;
-            foreach (var student in Students)
-            {
-                gradeList[i++] = student.AverageGrade;
-            }
-            // Sort array in ascending order. 
-            Array.Sort(gradeList);
-
-            // reverse array 
-            Array.Reverse(gradeList);
-
-            return gradeList;
+            if (Students.Count < 5)
+                throw new InvalidOperationException("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+            else
+                base.CalculateStatistics();
         }
-        */
+
+        public override void CalculateStudentStatistics(string name)
+        {
+            if (Students.Count < 5)
+                throw new InvalidOperationException("anked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
+            else
+            base.CalculateStudentStatistics(name);
+        }
+
+        /*
+                public double[] OrderByDescendingAverageGrade()
+                {
+                    double[] gradeList = new double[Students.Count];
+                   // double maxGrade = double.MinValue;
+                    var i = 0;
+                    foreach (var student in Students)
+                    {
+                        gradeList[i++] = student.AverageGrade;
+                    }
+                    // Sort array in ascending order. 
+                    Array.Sort(gradeList);
+
+                    // reverse array 
+                    Array.Reverse(gradeList);
+
+                    return gradeList;
+                }
+                */
     }
 }
